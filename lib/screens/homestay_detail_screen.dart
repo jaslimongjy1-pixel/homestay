@@ -53,7 +53,7 @@ class HomestayDetailScreen extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text(
                     'Price: RM ${homestay.price}',
-                    style: const TextStyle(fontSize: 20, color: Colors.green, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 20, color: Color.fromARGB(255, 57, 222, 68), fontWeight: FontWeight.bold),
                   ),
                   const Divider(height: 30, thickness: 1),
                   const Text(

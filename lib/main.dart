@@ -16,9 +16,16 @@ class HomestayApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.blueAccent,
-          foregroundColor: Colors.white,
+          backgroundColor: Color.fromARGB(255, 34, 65, 240), 
+          foregroundColor: Color.fromARGB(255, 242, 246, 246), 
           elevation: 0,
+          centerTitle: true, 
+          titleTextStyle: TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.bold, 
+            fontSize: 22,
+            color: Color.fromARGB(255, 216, 245, 245), 
+          ),
         ),
         cardTheme: CardThemeData(
           elevation: 3,

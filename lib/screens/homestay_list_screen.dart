@@ -76,7 +76,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
         setState(() {
           homestays = dynamicList.map((json) => Homestay.fromJson(json)).toList();
           if (homestays.isEmpty) {
-            errorMessage = 'No homestays found.\nPlease try a different search.';
+            errorMessage = 'No homestays found.\nPlease try a different keyword.';
           }
         });
       } else {
@@ -86,7 +86,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
       }
     } catch (e) {
       setState(() {
-        errorMessage = 'Please check your internet connection.\nFailed to reach API.';
+        errorMessage = 'Please check your internet connection.';
       });
     } finally {
       setState(() {
@@ -212,7 +212,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
                                     Text(
                                       'RM ${homestay.price}',
                                       style: const TextStyle(
-                                          color: Colors.green, fontWeight: FontWeight.bold),
+                                          color: Color.fromARGB(255, 65, 201, 203), fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
