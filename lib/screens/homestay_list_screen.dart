@@ -112,7 +112,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
                   child: TextField(
                     controller: searchController,
                     decoration: InputDecoration(
-                      hintText: 'Search (e.g. river, Sabah)',
+                      hintText: 'Search (e.g. river, beach)',
                       prefixIcon: const Icon(Icons.house_outlined),
                       
                       // 🟢 ADDED: Clickable Search Button on the right side of the text field
