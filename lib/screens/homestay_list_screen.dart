@@ -28,7 +28,6 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
     fetchHomestays();
   }
 
-  // Fetch list of states for the dropdown filter from the server data layer
   Future<void> fetchStates() async {
     try {
       final response = await http.get(Uri.parse('http://slum78.myddns.me/homestay2u/api/states'));
@@ -37,7 +36,6 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
         if (data is Map && data.containsKey('data')) {
           final List stateList = data['data'];
           setState(() {
-            // Safely extracts the text value out of each state map item
             states = ['All States', ...stateList.map((e) => e['state'].toString())];
           });
         }
@@ -47,7 +45,6 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
     }
   }
 
-  // Fetch homestays based on search keyword and state filter parameters
   Future<void> fetchHomestays({String query = ''}) async {
     setState(() {
       isLoading = true;
@@ -106,7 +103,6 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
       ),
       body: Column(
         children: [
-          // Search & Filter Header Section
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -117,13 +113,23 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
                     controller: searchController,
                     decoration: InputDecoration(
                       hintText: 'Search (e.g. river, Sabah)',
-                      prefixIcon: const Icon(Icons.search),
+                      prefixIcon: const Icon(Icons.house_outlined),
+                      
+                      // 🟢 ADDED: Clickable Search Button on the right side of the text field
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.search, color: Colors.blue),
+                        onPressed: () {
+                          // Triggers search using the text currently inside the controller
+                          fetchHomestays(query: searchController.text);
+                        },
+                      ),
+                      
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 0),
+                      contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                     ),
-                    onSubmitted: (value) => fetchHomestays(query: value),
+                    onSubmitted: (value) => fetchHomestays(query: value), // Optional: keeps keyboard enter working too
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -131,7 +137,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
                   flex: 1,
                   child: DropdownButtonFormField<String>(
                     isExpanded: true,
-                    initialValue: selectedState,
+                    value: selectedState,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -158,7 +164,6 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
             ),
           ),
           
-          // Main Display Output Container
           Expanded(
             child: isLoading
                 ? const Center(child: CircularProgressIndicator())
