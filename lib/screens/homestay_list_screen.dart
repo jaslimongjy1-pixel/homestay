@@ -205,7 +205,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
                   flex: 1,
                   child: DropdownButtonFormField<String>(
                     isExpanded: true,
-                    value: selectedState,
+                    initialValue: selectedState,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
