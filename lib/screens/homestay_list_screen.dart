@@ -34,7 +34,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
   void initState() {
     super.initState();
     fetchStates();
-    fetchHomestays(isRefresh: true); // Initial load acts like a fresh reset
+    fetchHomestays(isRefresh: true); 
     
     // Listen to scroll movements
     _scrollController.addListener(_onScroll);
@@ -51,7 +51,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
   // Detects when user scrolls near the bottom of the list
   void _onScroll() {
     if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 200) {
-      // If we aren't already loading and there is still more data on the server, get the next page
+      // If aren't already loading and there is still more data on the server, get the next page
       if (!isLoading && !isLoadingMore && hasMoreData) {
         fetchHomestays(query: searchController.text, isRefresh: false);
       }
@@ -96,7 +96,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
         errorMessage = '';
         currentPage = 1; // Reset to page 1 on new searches or pull-to-refresh
         hasMoreData = true;
-        homestays.clear(); // Wipe old results
+        homestays.clear(); 
       });
     } else {
       setState(() {
@@ -139,7 +139,7 @@ class _HomestayListScreenState extends State<HomestayListScreen> {
             homestays.addAll(fetchedItems); // Append new data to existing items list
           }
 
-          // If server returned fewer items than our limit, we hit the end of the line
+          // If server returned fewer items than the limit, hit the end of the line
           if (fetchedItems.length < limit) {
             hasMoreData = false;
           } else {
